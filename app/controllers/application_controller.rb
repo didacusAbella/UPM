@@ -1,12 +1,13 @@
 class ApplicationController < Sinatra::Base
 
+  set :root, File.expand_path('../../', __FILE__)
   set :environment, ENV['RACK_ENV']
   set :views, File.expand_path('../../views', __FILE__)
   set :haml, :format => :html5
 
   configure :development do
     puts "Now develop"
-    enable :logging, :method_override, :dump_errors, :raise_errors,:show_exceptions
+    enable :logging, :method_override, :dump_errors, :raise_errors,:show_exceptions, :static
   end
 
   configure :production do
