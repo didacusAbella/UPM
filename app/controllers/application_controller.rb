@@ -13,4 +13,8 @@ class ApplicationController < Sinatra::Base
   configure :production do
     puts "Now production"
   end
+
+  not_found do
+    haml 404.to_sym
+  end
 end

@@ -16,3 +16,12 @@ Universal Patent Manamer that handles deposit and handle patent in a secure mann
 ### What is a Blockchain?
 
 ### What is the connection between the Blockchain Technology and Patent?
+
+
+#Technologies
+1. Ruby
+2. Sinatra
+3. Kuba CSS
+4. JQuery
+5. Haml
+6. Chain.com SDK

@@ -1,12 +1,37 @@
-%div.row
-  %div.one-third.column
-    %h6 UPM. Built with Chain.com
-  %div.one-third.column
-    %h6 Visit Chain.com to learn more
-  %div.one-third.column
-    %a.button{href: "/signup"}Sign Up
-    %a.button{href: "/signin"}Log In
-%div.row
-  %h1.twelve.columns Welcome to the New Internet
-  %p.twelve.columns UPM is a decentralized Internet where users own their patents
-  %a.button{href: "/signup"}Sign Up
+%header.row.align-center
+  %figure
+    %img{alt: "Main image", src: "/images/patent-translation.jpg"}
+  %div.columns-2.col.col-12
+    %h1.text-center UPM
+    %h6.text-center Universal-Patent-Manager
+%nav.row.auto
+  %div.col
+  %div.col.push-center
+    %a.button.secondary.outline{href: "#about"}About
+    %a.button.secondary.outline{href: "/signin"}Sign In
+    %a.button.secondary.outline{href: "/signup"}Sign Up
+    %a.button.secondary.outline{href: "#contact"}Contact
+%div#about.row{style: "margin-top: 15px;"}
+  %div.col.columns-4.col-12
+    %h1.text-center Welcome to UPM!
+    %p.text-center This is a service where you can create and manage your patents in a secure manner.
+    %p.text-center 
+      This project is based on
+      %a{href: "https://chain.com/"}Chain.com
+      See the documentation for more info.
+    %p.text-center If you want other info or see the page below or visit my github project for see the code.
+%div#features.row
+  %div.col.col-4.columns-2
+    %h5.text-center Decentralized
+    %p.text-center Brief explanation of Decentralized
+  %div.col.col-4.columns-2
+    %h5.text-center Secure
+    %p.text-center Brief Explanation of Secure
+  %div.col.col-4.columns-2
+    %h5.text-center Anonymous
+    %p.text-center Brief Explanation of anonymous
+%footer#about.row
+
+  
+  
+  
