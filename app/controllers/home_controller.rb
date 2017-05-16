@@ -1,16 +1,16 @@
 class HomeController < ApplicationController
   get '/home' do
     @title = "Welcome"
-    haml :home
+    haml :'/pages/home'
   end
 
   get '/signin' do
     @title = "Signin"
-    haml :signin
+    haml :'/pages/signin'
   end
 
   get '/signup' do
     @title = "Signup"
-    haml :signup
+    haml :'/pages/signup'
   end
 end

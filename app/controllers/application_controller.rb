@@ -15,6 +15,7 @@ class ApplicationController < Sinatra::Base
   end
 
   not_found do
-    haml 404.to_sym
+    @title = "Oops!"
+    haml :not_found
   end
 end
