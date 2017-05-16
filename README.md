@@ -25,3 +25,8 @@ Universal Patent Manamer that handles deposit and handle patent in a secure mann
 4. JQuery
 5. Haml
 6. Chain.com SDK
+
+## TODO LIST
+1. Fix Center icon for contact form
+2. Add icon for description on main page
+3. Add better Github image

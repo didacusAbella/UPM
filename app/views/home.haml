@@ -1,5 +1,5 @@
-%header.row.align-center
-  %figure
+%header.row
+  %figure.push-center
     %img{alt: "Main image", src: "/images/patent-translation.jpg"}
   %div.columns-2.col.col-12
     %h1.text-center UPM
@@ -11,7 +11,7 @@
     %a.button.secondary.outline{href: "/signin"}Sign In
     %a.button.secondary.outline{href: "/signup"}Sign Up
     %a.button.secondary.outline{href: "#contact"}Contact
-%div#about.row{style: "margin-top: 15px;"}
+%div#about.row{style: "margin-top: 15px; background-color: #dee1e8"}
   %div.col.columns-4.col-12
     %h1.text-center Welcome to UPM!
     %p.text-center This is a service where you can create and manage your patents in a secure manner.
@@ -20,18 +20,37 @@
       %a{href: "https://chain.com/"}Chain.com
       See the documentation for more info.
     %p.text-center If you want other info or see the page below or visit my github project for see the code.
-%div#features.row
+%div#features.row.gutters
   %div.col.col-4.columns-2
     %h5.text-center Decentralized
-    %p.text-center Brief explanation of Decentralized
+    %p.text-center
+      There isn't no authorithy involved into
+      %br
+      validation and certification of datas.
+      %br
+      The users themself are responsable to execute this task.
   %div.col.col-4.columns-2
     %h5.text-center Secure
-    %p.text-center Brief Explanation of Secure
+    %p.text-center
+      All your patents are stored and protected so that 
+      %br
+      is impossible that others users try to stole or change them.
   %div.col.col-4.columns-2
-    %h5.text-center Anonymous
-    %p.text-center Brief Explanation of anonymous
-%footer#about.row
-
-  
-  
-  
+    %h5.text-center Simple
+    %p.text-center
+      Compile the form, generate the document and sign it!.
+      %br
+      All steps are very intuitive, in addition there is a
+      %br
+      simple tutorial that explain everithing 
+%footer#about.row{style: "margin-top: 15px; background-color: #dee1e8"}
+  %div.col.col-6
+    %p.text-center &copy 2017 All right Reserved.
+    %p.text-center Author: Didacus Abella
+  %div.col.col-6.row
+    %figure.col.col-6
+      %a{href: "#git"}
+        %img{alt: "git logo", src: "/images/git.png"}
+    %figure.col.col-6
+      %a{href: "#mail"}
+        %img{alt: "email logo", src: "/images/mail.png"}
