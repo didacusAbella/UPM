@@ -18,4 +18,8 @@ class ApplicationController < Sinatra::Base
     @title = "Oops!"
     haml :not_found
   end
+
+  error 401 do
+    haml :unauthorized
+  end
 end
