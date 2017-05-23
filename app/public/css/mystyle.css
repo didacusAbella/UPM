@@ -7,3 +7,8 @@ body{
   font-family: 'Inknut Antiqua', serif;
   font-weight: 300;
 }
+
+#about, #contact {
+  background-color: #dee1e8;
+  margin-top: 15px;
+}
