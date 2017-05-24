@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @menu_entries = [
       {name: "About", link: "#about"}, 
       {name: "Signin", link: "/signin"}, 
-      {name: "Sign Out", link: "/signup"},
+      {name: "Sign Up", link: "/signup"},
       {name: "Contact", link: "#contact"}
     ]
     haml :'/pages/home'
