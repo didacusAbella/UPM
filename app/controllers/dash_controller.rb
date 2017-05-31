@@ -9,4 +9,9 @@ class DashController < ApplicationController
     @title = "Search"
     haml :'/pages/search'
   end
+
+  get '/patent/new' do
+    @title = "Crea Nuovo Brevetto"
+    haml :'/pages/new_patent'
+  end
 end

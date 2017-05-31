@@ -1,0 +1,29 @@
+%form#new{method: "post", action: "/create_patent"}
+  %fieldset
+    %legend Compile The Patent
+    %div.form-item
+      %label 
+        Patent Title
+      %input{type: "text", placeholder: "Patent Title", name: "title"}
+    %div.form-item
+      %label 
+        Patent Abstract
+      %textarea{rows: "5", name: "abstract"}
+    %div.form-item
+      %label 
+        Summary of the invention
+      %textarea{rows: "5", name: "summary"}
+    %div.form-item
+      %label 
+        First Image
+      %input{type: "file", name: "img-1"}
+    %div.form-item
+      %label 
+        Second Image
+      %input{type: "file", name: "img-2"}
+    %div.form-item
+      %label 
+        Third Image
+      %input{type: "file", name: "img-3"}
+    %div.form-item
+      %input.big{type: "submit", value: "Create"}

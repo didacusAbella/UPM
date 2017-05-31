@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  helpers ApplicationHelper
 
   get '/home' do
     @title = "Welcome"
@@ -19,5 +20,19 @@ class HomeController < ApplicationController
   get '/signup' do
     @title = "Signup"
     haml :'/pages/signup'
+  end
+
+  post '/register' do
+    #signer.add_key(key, chain.mock_hsm.signer_conn)
+      chain.accounts.create(
+      alias: params[:username],
+      root_xpubs: [key.xpub],
+      quorum: 1,
+      tags: {
+        first_name: params[:name],
+        last_name: params[:last_name]
+      }
+    )
+    redirect "/dashboard/home"
   end
 end
