@@ -1,3 +1,6 @@
+# Main Controller. Handles setup configuration shared in other controllers
+#
+# See Documentation for Sinatra::Base for more information
 class ApplicationController < Sinatra::Base
 
   set :root, File.expand_path('../../', __FILE__)
@@ -5,9 +8,21 @@ class ApplicationController < Sinatra::Base
   set :views, File.expand_path('../../views', __FILE__)
   set :haml, :format => :html5
 
+  @@current_user = User.new() #Shared variable for manage session and token
+
+  before do
+    if request.path_info =~ /auth/
+      halt 401, haml(:unauthorized) if self.class.authenticate! 
+    end
+  end
+
+  def self.current_user
+    @@current_user
+  end
+
   configure :development do
     puts "Now develop"
-    enable :logging, :method_override, :dump_errors, :raise_errors,:show_exceptions, :static
+    enable :logging, :method_override, :dump_errors, :static, :raise_errors,:show_exceptions
   end
 
   configure :production do
@@ -21,5 +36,16 @@ class ApplicationController < Sinatra::Base
 
   error 401 do
     haml :unauthorized
+  end
+
+
+  #This method check if the current user have the right permissions to access pages.
+  #
+  # call-seq:
+  #   ApplicationController.authenticate! => TrueClass if token is valid FalseClass otherwise
+  #
+  # if FalseClass is returned the method block all redirect all request. See Sinatra::Base#redirect for more info 
+  def self.authenticate!
+    self.current_user.not_valid_token?
   end
 end

@@ -1,6 +1,11 @@
+#Require Vendor Library
 require "chain"
 require "sinatra/base"
-require_relative "./app/controllers/application_controller"
-Dir.glob('./app/{helpers,controllers}/*.rb').each { |file| require file }
+require "pdfkit"
+#Require My files
+#require_relative "./app/controllers/application_controller"
+Dir['./app/models/*.rb'].each{ |file| require file }
+Dir['./app/helpers/*.rb'].each {|file| require file }
+(Dir['./app/controllers/*.rb']).sort.each { |file| require file }
 map('/') { run HomeController }
-map('/dashboard') { run DashController }
+map('/dashboard') { run DashboardController }

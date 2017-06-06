@@ -1,6 +1,6 @@
 %div.row
   %div.col.col-12
-    %h4 Benvenuto Paolo Rossi
+    %h4== Benvenuto #{@name} - #{@last_name}
 %div.row
   %div.col.col-12
     %a.button.secondary{href: "/dashboard/search"}
@@ -28,4 +28,7 @@
             %button.button Elimina
 %div.row
   %div.col.col-12
-    %a.button.large{href: "/dashboard/patent/new"} Nuovo Brevetto
+    %a.button.large{href: "/dashboard/auth/patent/new"} Nuovo Brevetto
+%div.row
+  %div.col.col-12
+    %a.button.large{href: "/dashboard/auth/logout"} Esci

@@ -1,14 +1,14 @@
+# Controller for home page. Inherit all methods from Application Controller
+#
+# See ApplicationController for more info 
 class HomeController < ApplicationController
-  helpers ApplicationHelper
+  
+  helpers HomeHelper
 
   get '/home' do
     @title = "Welcome"
-    @menu_entries = [
-      {name: "About", link: "#about"}, 
-      {name: "Signin", link: "/signin"}, 
-      {name: "Sign Up", link: "/signup"},
-      {name: "Contact", link: "#contact"}
-    ]
+    @menu_entries = Home.new([{name: "About", link: "#about"}, {name: "Signin", link: "/signin"}, 
+      {name: "Sign Up", link: "/signup"}, {name: "Contact", link: "#contact"}]).menu
     haml :'/pages/home'
   end
 
@@ -23,16 +23,8 @@ class HomeController < ApplicationController
   end
 
   post '/register' do
-    #signer.add_key(key, chain.mock_hsm.signer_conn)
-      chain.accounts.create(
-      alias: params[:username],
-      root_xpubs: [key.xpub],
-      quorum: 1,
-      tags: {
-        first_name: params[:name],
-        last_name: params[:last_name]
-      }
-    )
-    redirect "/dashboard/home"
+    @@current_user = create_user(params)
+    str = "name=#{self.class.current_user.name}&last_name=#{self.class.current_user.last_name}"
+    redirect to("/dashboard/auth/home?#{str}") if self.class.current_user
   end
 end
