@@ -1,4 +1,4 @@
-%form{method: "post", action: "/register"}
+%form{method: "post", action: "/register", validate: "true"}
   %fieldset
     %legend Register User
     %div.form-item
@@ -6,6 +6,12 @@
         Username:
         %span.req *
       %input{type: "text", id: "username", placeholder: "Insert Username", name: "username"}
+      %div.desc Required for create an Account
+    %div.form-item
+      %label
+        Password:
+        %span.req *
+      %input{type: "password", id: "password", placeholder: "Insert Password", name: "secret"}
       %div.desc Required for create an Account
     %div.form-item
       %label Name:

@@ -8,11 +8,11 @@ class ApplicationController < Sinatra::Base
   set :views, File.expand_path('../../views', __FILE__)
   set :haml, :format => :html5
 
-  @@current_user = User.new() #Shared variable for manage session and token
+  @@current_user = nil #Shared variable for manage session and token
 
   before do
     if request.path_info =~ /auth/
-      halt 401, haml(:unauthorized) if self.class.authenticate! 
+      #halt 401, haml(:unauthorized) if self.class.authenticate! 
     end
   end
 
@@ -46,6 +46,6 @@ class ApplicationController < Sinatra::Base
   #
   # if FalseClass is returned the method block all redirect all request. See Sinatra::Base#redirect for more info 
   def self.authenticate!
-    self.current_user.not_valid_token?
+    self.current_user.nil?
   end
 end

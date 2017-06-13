@@ -1,9 +1,14 @@
 %form{method: "post", action: "/login"}
-  %div.form-item
-    %label 
-      Username:
-      %span.req *
-    %input{type: "text", placeholder: "Insert Username", id: "username"}
-  %div.form-item
-    %input{type: "submit", value: "Login"}
+  %fieldset
+    %legend Login
+    %div.form-item
+      %label 
+        Username:
+        %span.req *
+      %input{type: "text", placeholder: "Insert Username", name: "username"}
+    %div.form-item
+      %label Password:
+      %input{type: "password", placeholder: "Insert Password", name: "secret"}
+    %div.form-item
+      %input{type: "submit", value: "Login"}
   

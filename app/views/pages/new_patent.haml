@@ -1,29 +1,43 @@
-%form#new{method: "post", action: "/create_patent"}
+%form{method: "post", action: "/dashboard/auth/patent/create_patent", enctype: "multipart/form-data"}
+  %nav.tabs{"data-component" => "tabs"}
+    %ul
+      %li.active
+        %a{href: "#form1"} Pagina-1
+      %li
+        %a{href: "#form2"} Pagina-2
+      %li
+        %a{href: "#form3"} Pagina-3
   %fieldset
-    %legend Compile The Patent
-    %div.form-item
-      %label 
-        Patent Title
-      %input{type: "text", placeholder: "Patent Title", name: "title"}
-    %div.form-item
-      %label 
-        Patent Abstract
-      %textarea{rows: "5", name: "abstract"}
-    %div.form-item
-      %label 
-        Summary of the invention
-      %textarea{rows: "5", name: "summary"}
-    %div.form-item
-      %label 
-        First Image
-      %input{type: "file", name: "img-1"}
-    %div.form-item
-      %label 
-        Second Image
-      %input{type: "file", name: "img-2"}
-    %div.form-item
-      %label 
-        Third Image
-      %input{type: "file", name: "img-3"}
-    %div.form-item
-      %input.big{type: "submit", value: "Create"}
+    %legend Compila i Campi
+    %div#form1
+      %div.form-item
+        %label Title of the patent invention
+        %input{type: "text", placeholder: "Title here", name: "title"}
+      %div.form-item
+        %label Background of the invention
+        %textarea{rows: "5", name: "background"}
+      %div.form-item
+        %label Summary of the Invention 
+        %textarea{rows: "5", name: "summary"}
+    %div#form2
+      %div.form-item
+        %label First Image
+        %input#img1{type: "file", name: "image1"}
+        %div#img1-holder
+      %div.form-item
+        %label Second Image
+        %input#img2{type: "file", name: "image2"}
+        %div#img2-holder
+      %div.form-item
+        %label Third Image
+        %input#img3{type: "file", name: "image3"}
+        %div#img3-holder
+    %div#form3
+      %div.form-item
+        %label Patent Claims
+        %textarea{rows: "5", name: "claims"}
+      %div.form-item
+        %label Patent Description
+        %textarea{rows: "5", name: "description"}
+    %input{type: "submit", value: "Crea"}
+    %input{type: "reset", value: "Annulla"}

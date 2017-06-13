@@ -1,7 +1,7 @@
 #Require Vendor Library
 require "chain"
 require "sinatra/base"
-require "pdfkit"
+require "prawn"
 #Require My files
 #require_relative "./app/controllers/application_controller"
 Dir['./app/models/*.rb'].each{ |file| require file }

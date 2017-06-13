@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   
   helpers HomeHelper
 
-  get '/home' do
+  get '/' do
     @title = "Welcome"
     @menu_entries = Home.new([{name: "About", link: "#about"}, {name: "Signin", link: "/signin"}, 
       {name: "Sign Up", link: "/signup"}, {name: "Contact", link: "#contact"}]).menu
@@ -23,7 +23,13 @@ class HomeController < ApplicationController
   end
 
   post '/register' do
-    @@current_user = create_user(params)
+    @@current_user = register_user(params)
+    str = "name=#{self.class.current_user.name}&last_name=#{self.class.current_user.last_name}"
+    redirect to("/dashboard/auth/home?#{str}") if self.class.current_user
+  end
+
+  post '/login' do
+    @@current_user = login_user(params)
     str = "name=#{self.class.current_user.name}&last_name=#{self.class.current_user.last_name}"
     redirect to("/dashboard/auth/home?#{str}") if self.class.current_user
   end
