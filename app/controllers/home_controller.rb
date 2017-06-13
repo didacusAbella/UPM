@@ -23,13 +23,13 @@ class HomeController < ApplicationController
   end
 
   post '/register' do
-    @@current_user = register_user(params)
+    self.class.current_user = register_user(params)
     str = "name=#{self.class.current_user.name}&last_name=#{self.class.current_user.last_name}"
     redirect to("/dashboard/auth/home?#{str}") if self.class.current_user
   end
 
   post '/login' do
-    @@current_user = login_user(params)
+    self.class.current_user = login_user(params)
     str = "name=#{self.class.current_user.name}&last_name=#{self.class.current_user.last_name}"
     redirect to("/dashboard/auth/home?#{str}") if self.class.current_user
   end

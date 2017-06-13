@@ -22,7 +22,7 @@ class DashboardController < ApplicationController
 
   get '/auth/logout' do
     logout(self.class.current_user.username)
-    redirect "/home"
+    redirect "/"
   end
 
   post '/auth/patent/create_patent' do
@@ -30,6 +30,7 @@ class DashboardController < ApplicationController
     if patent
       send_file "contents/downloads/#{patent.title}.pdf", :filename => "#{patent.title}.pdf", :type => 'Application/octet-stream'
       redirect "/dashboard/auth/home"
+      nil
     end
   end
 end

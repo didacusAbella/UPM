@@ -12,12 +12,16 @@ class ApplicationController < Sinatra::Base
 
   before do
     if request.path_info =~ /auth/
-      #halt 401, haml(:unauthorized) if self.class.authenticate! 
+      halt 401, haml(:unauthorized) if self.class.authenticate! 
     end
   end
 
   def self.current_user
     @@current_user
+  end
+
+  def self.current_user=(new_value)
+    @@current_user = new_value
   end
 
   configure :development do

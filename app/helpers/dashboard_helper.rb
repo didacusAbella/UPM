@@ -14,7 +14,7 @@ module DashboardHelper
       guard_data: { id: id }
     })
     LocalChain.instance.access_tokens.delete(id)
-    @@current_user = nil
+    self.class.current_user = nil
   end
 
   # call-seq:
