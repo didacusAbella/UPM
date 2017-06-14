@@ -3,32 +3,35 @@
     %h4== Benvenuto #{@name} - #{@last_name}
 %div.row
   %div.col.col-12
-    %a.button.secondary{href: "/dashboard/search"}
+    %a.button.secondary{href: "/patent/auth/search"}
       Cerca
       %i.kube-search
-    %a.button.secondary Brevetti
+    %a.button.secondary{href: "/dashboard/auth/patent?deposited=true"} Brevetti-Depositati
 %div.row
   %div.col-col-12
-    %table.striped
-      %thead
-        %tr
-          %th Id Brevetto
-          %th Stato
-          %th Azione
-      %tbody
-        %tr
-          %td efjmsgnsgnmskgmsg
-          %td Pending
-          %td
-            %button.button Elimina
-        %tr
-          %td weinwfniwnfwiofnd
-          %td Deposited
-          %td
-            %button.button Elimina
+    - if @user_patents.nil?
+      %p You don't have patents
+    - else
+      %table.striped
+        %thead
+          %tr
+            %th Id Brevetto
+            %th Data-Creazione
+            %th Md5
+            %th Azione
+        %tbody
+          - @user_patents.each do |patent|
+            %tr
+              %td= patent.alias
+              %td= patent.definition["created_at"]
+              %td= patent.definition["integrity"]
+              %td
+                %a.button.primary{href: "/dashboard/auth/deposit?patent=#{patent.id}"} Deposita
+                
+            
 %div.row
   %div.col.col-12
-    %a.button.large{href: "/dashboard/auth/patent/new"} Nuovo Brevetto
+    %a.button.large{href: "/patent/auth/new_patent"} Nuovo Brevetto
 %div.row
   %div.col.col-12
     %a.button.large{href: "/dashboard/auth/logout"} Esci

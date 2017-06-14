@@ -4,17 +4,19 @@ require 'digest'
 class User < Chain::Client
 
   attr_accessor :token, :name, :last_name, :password, :username
+  attr_reader :patents
 
   def initialize(username)
+    @patents = []
     token = assign_token(username)
     super({ access_token: token })
   end
 
-  def key
-    mock_hsm.keys.create
-  end
 
-  def save!(args, &block)
+
+  def save!(args, signer, &block)
+    key = mock_hsm.keys.create
+    signer.add_key(key, mock_hsm.signer_conn)
     new_account = accounts.create(
       alias: args[:username],
       root_xpubs: [key.xpub],
@@ -36,6 +38,15 @@ class User < Chain::Client
     return self
   end
 
+  def find_patents
+    assets.query(
+      filter: 'definition.issuer=$1 AND tags.author=$2', 
+      filter_params: [username, username]
+      ).each do |asset|
+        patents << asset
+      end
+  end
+
 
   private
   def assign_token(username)
@@ -47,5 +58,6 @@ class User < Chain::Client
     })
     user_token.token
   end
+
 
 end

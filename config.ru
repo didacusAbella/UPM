@@ -9,3 +9,4 @@ Dir['./app/helpers/*.rb'].each {|file| require file }
 (Dir['./app/controllers/*.rb']).sort.each { |file| require file }
 map('/') { run HomeController }
 map('/dashboard') { run DashboardController }
+map ('/patent') { run PatentController }

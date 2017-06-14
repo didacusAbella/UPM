@@ -7,12 +7,12 @@ class ApplicationController < Sinatra::Base
   set :environment, ENV['RACK_ENV']
   set :views, File.expand_path('../../views', __FILE__)
   set :haml, :format => :html5
-
+  SIGNER = Chain::HSMSigner.new
   @@current_user = nil #Shared variable for manage session and token
 
   before do
     if request.path_info =~ /auth/
-      halt 401, haml(:unauthorized) if self.class.authenticate! 
+      #halt 401, haml(:unauthorized) if self.class.authenticate! 
     end
   end
 

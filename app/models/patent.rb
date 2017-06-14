@@ -12,10 +12,12 @@ class Patent
     block.call(self) if block_given?
   end
 
-  def save!(user, signature)
+  def save!(user, signer, signature)
+    key = user.mock_hsm.keys.create
+    signer.add_key(key, user.mock_hsm.signer_conn)
     user.assets.create(
       alias: title,
-      root_xpubs: [user.key.xpub],
+      root_xpubs: [key.xpub],
       quorum: 1,
       definition: {
         issuer: user.username,
@@ -24,7 +26,8 @@ class Patent
       },
       tags: {
         author: user.username,
-        title: title
+        title: title,
+        deposited: false
       }
     )
   end

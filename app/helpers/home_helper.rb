@@ -10,6 +10,7 @@ module HomeHelper
       created_user.name = block_account.tags["name"]
       created_user.last_name = block_account.tags["last_name"]
       created_user.password = block_account.tags["password"]
+      created_user.find_patents
     end
     fn
   end
@@ -19,7 +20,7 @@ module HomeHelper
   # Create a new User and into chain with +params+ passed
   # +params+ => an Hash of values
   def register_user(params)
-    User.new(params[:username]).save!(params, &sync_data)
+    User.new(params[:username]).save!(params, self.class::SIGNER, &sync_data)
   end
 
   def login_user(params)
