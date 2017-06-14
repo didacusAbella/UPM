@@ -22,4 +22,11 @@ class DashboardController < ApplicationController
     @alias = params[:patent]
     haml :'/pages/deposit'
   end
+
+  get '/auth/patent' do
+    @transactions = self.class.current_user.transactions.query(
+      filter: "inputs(account_alias=$1) OR outputs(account_alias=$1)",
+      filter_params: ['didacus'])
+    haml :'/pages/transactions'
+  end
 end

@@ -1,0 +1,14 @@
+%div.row
+  %div.col.col-12
+    %table
+      %thead
+        %tr
+          %th Id Brevetto
+          %th Data-Deposito
+          %th Id Transazione
+      %tbody
+        - @transactions.each do |transac|
+          %tr
+            %td= transac.inputs[0].asset_alias
+            %td= transac.timestamp
+            %td= transac.id
