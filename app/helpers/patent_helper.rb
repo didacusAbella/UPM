@@ -29,6 +29,19 @@ module PatentHelper
   end
 
   def deposit_patent(id)
+    #Find Asset and Accounts
+    ass = self.class.current_user.assets.query(
+      filter: "alias=$1",
+      filter_params: [id]
+      ).first
+    acc = self.class.current_user.accounts.query(
+      filter: "alias=$1",
+      filter_params: [self.class.current_user.username]
+    ).first
+    #Add Sign into HSMS
+    self.class::SIGNER.add_key(ass.keys[0].root_xpub, self.class.current_user.mock_hsm.signer_conn)
+    self.class::SIGNER.add_key(acc.keys[0].root_xpub, self.class.current_user.mock_hsm.signer_conn)
+    #Start Transactions
     issuance = self.class.current_user.transactions.build do |b|
     b.issue asset_alias: id, amount: 1
     b.control_with_account account_alias: self.class.current_user.username, asset_alias: id, amount: 1

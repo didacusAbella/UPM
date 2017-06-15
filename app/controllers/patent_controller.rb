@@ -15,8 +15,6 @@ class PatentController < ApplicationController
     raise ValidationError, "params not valid retry. Into Create patent" if Validator.validate_params_patent(params)
     patent = create_patent(params, params[:image1], params[:image2], params[:image3])
     if patent
-      @text = "Patent created with success. Now go back in home page"
-      haml :success
       send_file "contents/downloads/#{patent.title}.pdf", :filename => "#{patent.title}.pdf", :type => 'Application/octet-stream'
     end
   end

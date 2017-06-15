@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
 
   before do
     if request.path_info =~ /auth/
-      #halt 401, haml(:unauthorized) if self.class.authenticate! 
+      raise UnauthorizedError if self.class.authenticate! 
     end
   end
 
