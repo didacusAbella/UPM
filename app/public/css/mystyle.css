@@ -16,3 +16,14 @@ body{
 #menu {
   font-family: 'Inknut Antiqua', serif;
 }
+
+input[type="submit"]{
+  cursor: pointer;
+  width: inherit;
+}
+
+div img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

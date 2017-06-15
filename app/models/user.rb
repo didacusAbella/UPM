@@ -34,6 +34,10 @@ class User < Chain::Client
   def find(args, &block)
     crypto_pass = Digest::SHA2.hexdigest(args["username"] + "-" + args["secret"])
     acc = accounts.query(filter: 'alias=$1 AND tags.password=$2', filter_params: [args["username"], crypto_pass]).first
+    if acc.nil?
+      remove_token(args["username"])
+      raise UnauthorizedError, "Unathorized"
+    end
     block.call(self, acc) if block_given?
     return self
   end
@@ -59,5 +63,12 @@ class User < Chain::Client
     user_token.token
   end
 
+  def remove_token(id)
+    LocalChain.instance.authorization_grants.delete({
+      guard_type: 'access_token',
+      guard_data: { id: id }
+    })
+    LocalChain.instance.access_tokens.delete(id)
+  end
 
 end

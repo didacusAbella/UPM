@@ -23,6 +23,10 @@ module HomeHelper
     User.new(params[:username]).save!(params, self.class::SIGNER, &sync_data)
   end
 
+  #call-seq:
+  #   self.login_user(params) => User
+  # check if a user is in the system and log into dashboard
+  # +params+ => Hash of values
   def login_user(params)
     User.new(params[:username]).find(params, &sync_data)
   end

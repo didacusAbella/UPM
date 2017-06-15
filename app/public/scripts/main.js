@@ -1,5 +1,9 @@
 (function () {
+
   $(document).ready(function () {
+    /**
+     * Upload images
+     */
     $('#form2 input[type=file]').each(function (key, value) {
       $(value).on('change', function () {
         if (typeof (FileReader) != "undefined") {
@@ -17,5 +21,7 @@
         }
       });
     });
+
   });
 })();
+

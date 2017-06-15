@@ -32,12 +32,20 @@ module PatentHelper
     issuance = self.class.current_user.transactions.build do |b|
     b.issue asset_alias: id, amount: 1
     b.control_with_account account_alias: self.class.current_user.username, asset_alias: id, amount: 1
+    end
+    signed_issuance = self.class::SIGNER.sign(issuance)
+    self.class.current_user.transactions.submit(signed_issuance)
+    self.class.current_user.assets.update_tags(
+      alias: id,
+      tags: {
+        deposited: true
+      }
+    )
   end
-  signed_issuance = self.class::SIGNER.sign(issuance)
-  self.class.current_user.transactions.submit(signed_issuance)
-  self.class.user.assets.query(
-    filter: "alias=$1",
-    filter_params: [id]
-  ).first.update_tags(deposited: true)
+
+  def search_patents(name)
+    self.class.current_user.transactions.query.select do |txt| 
+      !txt.inputs[0].asset_alias.nil? && txt.inputs[0].asset_alias.include?(name)
+    end
   end
 end

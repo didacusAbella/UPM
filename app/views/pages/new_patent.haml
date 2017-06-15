@@ -12,32 +12,39 @@
     %div#form1
       %div.form-item
         %label Title of the patent invention
-        %input{type: "text", placeholder: "Title here", name: "title"}
+        %input{type: "text", placeholder: "Title here", name: "title", required: true, pattern: ".{6,25}"}
+        %div.desc unique title for self describe patent content
       %div.form-item
         %label Background of the invention
-        %textarea{rows: "5", name: "background"}
+        %textarea{rows: "5", name: "background", placeholder: "Background...", required: true, pattern: ".{20,255}"}
       %div.form-item
         %label Summary of the Invention 
-        %textarea{rows: "5", name: "summary"}
+        %textarea{rows: "5", name: "summary", placehlder: "Summary...", required: true, pattern: ".{20,255}"}
+        %div.desc A detailed desription of the invention
     %div#form2
       %div.form-item
         %label First Image
-        %input#img1{type: "file", name: "image1"}
+        %input#img1{type: "file", name: "image1", required: true}
         %div#img1-holder
       %div.form-item
         %label Second Image
-        %input#img2{type: "file", name: "image2"}
+        %input#img2{type: "file", name: "image2", required: true}
         %div#img2-holder
       %div.form-item
         %label Third Image
-        %input#img3{type: "file", name: "image3"}
+        %input#img3{type: "file", name: "image3", required: true}
         %div#img3-holder
     %div#form3
       %div.form-item
         %label Patent Claims
-        %textarea{rows: "5", name: "claims"}
+        %textarea{rows: "5", name: "claims", required: true, pattern: ".{20,255}", placeholder: "Claims..."}
+        %div.desc Claims are important because define which subject-matter is protected by the patent
       %div.form-item
         %label Patent Description
-        %textarea{rows: "5", name: "description"}
-    %input{type: "submit", value: "Crea"}
-    %input{type: "reset", value: "Annulla"}
+        %textarea{rows: "5", name: "description", required: true, pattern: ".{20,255}", placeholder: "Background..."}
+        %div.desc Short description of the invention
+    %div.row.gutters
+      %div.form-item.col.col-6
+        %input{type: "submit", value: "Crea"}
+      %div.form-item.col.col-6
+        %input{type: "reset", value: "Annulla"}

@@ -31,6 +31,7 @@ class ApplicationController < Sinatra::Base
 
   configure :production do
     puts "Now production"
+    disable :raise_error, :show_exceptions
   end
 
   not_found do
@@ -38,7 +39,11 @@ class ApplicationController < Sinatra::Base
     haml :not_found
   end
 
-  error 401 do
+  error ValidationError do
+    haml :validation_failed
+  end
+
+  error UnauthorizedError do
     haml :unauthorized
   end
 

@@ -7,6 +7,7 @@
       Cerca
       %i.kube-search
     %a.button.secondary{href: "/dashboard/auth/patent"} Brevetti-Depositati
+    %a.button.secondary{href: "/dashboard/auth/logout"} Esci
 %div.row
   %div.col-col-12
     - if @user_patents.nil?
@@ -30,8 +31,5 @@
                 
             
 %div.row
-  %div.col.col-12
+  %div.col.push-center
     %a.button.large{href: "/patent/auth/new_patent"} Nuovo Brevetto
-%div.row
-  %div.col.col-12
-    %a.button.large{href: "/dashboard/auth/logout"} Esci

@@ -2,13 +2,11 @@
   %fieldset
     %legend Login
     %div.form-item
-      %label 
-        Username:
-        %span.req *
-      %input{type: "text", placeholder: "Insert Username", name: "username"}
+      %label Username:
+      %input{type: "text", placeholder: "Insert Username", name: "username", pattern: "[^\s-:].{3,15}", required: true }
     %div.form-item
       %label Password:
-      %input{type: "password", placeholder: "Insert Password", name: "secret"}
+      %input{type: "password", placeholder: "Insert Password", name: "secret", pattern: "[^\s].{3,15}", required: true }
     %div.form-item
       %input{type: "submit", value: "Login"}
   

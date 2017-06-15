@@ -1,27 +1,25 @@
-%form{method: "post", action: "/register", validate: "true"}
+%form#signup-form{method: "post", action: "/register"}
   %fieldset
     %legend Register User
     %div.form-item
       %label
         Username:
         %span.req *
-      %input{type: "text", id: "username", placeholder: "Insert Username", name: "username"}
-      %div.desc Required for create an Account
+      %input{type: "text", id: "username", placeholder: "Insert Username", name: "username", required: true, pattern: "[^\s-:].{3,15}"}
+      %div.desc Required for create an Account. From 3 to 15 characters without spaces and hyphen.
     %div.form-item
       %label
         Password:
         %span.req *
-      %input{type: "password", id: "password", placeholder: "Insert Password", name: "secret"}
-      %div.desc Required for create an Account
+      %input{type: "password", id: "password", placeholder: "Insert Password", name: "secret", required: true, pattern: "[^\s].{3,15}"}
+      %div.desc Required for create an Account. From 3 to 15 characters long
     %div.form-item
       %label Name:
-      %input{type: "text", id: "name", placeholder: "Insert Name", name: "name"}
-      %div.desc Not Required but fill for simplify search
+      %input{type: "text", id: "name", placeholder: "Insert Name", name: "name", pattern: "[^\s].{3,15}", required: true}
+      %div.desc Fill for simplify search. From 3 to 15 characters long.
     %div.form-item
       %label Last Name:
-      %input{type: "text", id: "last_name", placeholder: "Insert Last Name", name: "last_name"}
-      %div.desc Not Required but fill for simplify search
+      %input{type: "text", id: "last_name", placeholder: "Insert Last Name", name: "last_name", pattern: "[^\s].{3,15}", required: true}
+      %div.desc Fill for simplify search. From 3 to 15 characters long.
     %div.form-item
       %input{type: "submit", value: "Register Account"}
-
-

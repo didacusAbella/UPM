@@ -1,6 +1,24 @@
-%form.form{method: "get", action: "/search"}
-  %div.form-item
-    %label
-      %div.append.w50
-        %input{type:"text", name:"search", placeholder: "Search"}
-        %button.button.outline Go
+%div.row
+  %div.col.col-4
+    %h2.text-center Search for created Patents
+  %div.col.col-8
+    %form#search-form{action: "/patent/auth/search", method: "post" }
+      %div.form-item
+        %input#search.w50{type: "text", name:"search", placeholder: "Search"}
+        %input{type: "submit", value: "Go"}
+  %div.col.col-12
+    - if @search.nil?
+      %p Nessun Risultato Ricerca
+    - else
+      %table
+        %thead
+          %tr
+            %th Id Brevetto
+            %th Data Deposito
+            %th Creatore
+        %tbody
+          - @search.each do |result|
+            %tr
+              %td= result.inputs[0].asset_alias
+              %td= result.timestamp
+              %td= result.inputs[0].account_alias

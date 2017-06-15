@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
     @title = "Dashboard"
     @name = self.class.current_user.name
     @last_name = self.class.current_user.last_name
-    @user_patents = self.class.current_user.patents.select {|patent| patent.tags[:deposited] == false }
+    @user_patents = self.class.current_user.patents.select {|patent| patent.tags["deposited"] == false }
     haml :'/pages/dashboard'
   end
 
