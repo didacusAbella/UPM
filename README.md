@@ -10,23 +10,18 @@ Universal Patent Manamer that handles deposit and handle patent in a secure mann
 
 
 ### What is a Patent? 
-
+Patent are simply inventions, or anything where we can assign ownership and copyright
 ### Why we Should secure a patent?
-
+Because is possible that other people have the same ideas of the patent's creator and try to stole them
 ### What is a Blockchain?
-
+a distributed ledger where people can issue their transactions into a secure manner
 ### What is the connection between the Blockchain Technology and Patent?
-
+Store patent deposition on the blockchain assure ownership on the patent and nullify the possibility that someone try to modify and stole them
 
 #Technologies
 1. Ruby
 2. Sinatra
-3. Kuba CSS
+3. Kube CSS
 4. JQuery
 5. Haml
 6. Chain.com SDK
-
-## TODO LIST
-1. Fix Center icon for contact form
-2. Add icon for description on main page
-3. Add better Github image
